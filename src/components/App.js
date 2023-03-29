@@ -3,7 +3,7 @@ import{Navbar,Home,CreatePost,PostDetail} from './index.js'
 
 function App() {
   return (
-    <div className="">
+    <div className="container">
      <Navbar/>
       <Routes>
         <Route exact path='/' element={<Home/>} />
