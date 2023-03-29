@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { firestore } from "../firebase";
 
 
 function CreatePost() {
@@ -6,11 +7,18 @@ function CreatePost() {
   const[content,setContent]=useState();
   const[subTitle,setSubTitle]=useState();
   function handleSubmit(e){
-    // when we submitting the form page does not automatically reloaded
+    // when we the event triggered it prevent from refresh the browser
     e.preventDefault();
     console.log('title',title);
     console.log('subTitle',subTitle);
     console.log('content',content);
+    firestore.collection('posts').add({
+      title,
+      content,
+      subTitle,
+      createdAt:new Date(),
+
+    })
 
   }
     return (
