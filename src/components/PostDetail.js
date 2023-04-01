@@ -1,7 +1,20 @@
+import{useState,useEffect} from "react";
+import { useParams } from "react-router-dom";
+import { firestore } from "../firebase";
 function PostDetail() {
+  const [post,setPost]=useState({});
+  // usePramas gives us object so we can destructure it 
+  const {postId} = useParams();
+  useEffect(()=>{
+    firestore.collection('posts').doc(postId).get().then((snapshot)=>{
+      console.log('snapshot',snapshot.data());
+      setPost(snapshot.data());
+    })
+  },[]);
     return (
-      <div className="">
-        PostDetail
+      <div className="post-detail">
+        <h1>{post.title}</h1>
+        <p>{post.content}</p>
        
       </div>
     );

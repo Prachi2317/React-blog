@@ -6,7 +6,7 @@ function Home() {
   useEffect(()=>{
    firestore.collection('posts').get().then((snapshot)=>{
     const posts=snapshot.docs.map((doc)=>{
-      // console.log(doc.data());
+     console.log(doc.data());
       // console.log(doc.id);
       // console.log(doc);
       return {
